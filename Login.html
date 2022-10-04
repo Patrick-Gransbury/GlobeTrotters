@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+    <link rel="stylesheet" href="Login.css">
+    <link rel="icon" type="image/x-icon" href="LOGO.ico">
+    <script>
+    function sendFormData(){
+        // console.log(navigator.Geolocation.getCurrentPosition())
+        let signupForm = document.getElementById('submit')
+        signupForm.addEventListener('submit', function(event){
+            event.preventDefault()
+        })
+            // event.preventDefault()
+        console.log("Form Data sent")
+
+        const data = {
+            'username' : document.getElementById('username-field').value,
+            'password' : document.getElementById('password-field').value,
+        };
+
+        fetch('http://localhost:8080/api/login', {
+        // mode: 'cors',
+        // credentials : 'same-origin',
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            //code to redirect user upon auth
+            if(data.login == true){
+                sessionStorage.setItem('username', document.getElementById('username-field').value)
+                window.location.href = "home.html";
+            }
+            else{
+                alert("Incorrect Login Credentials!")
+            }
+        })
+        .catch((error) => {
+        console.error('Error:', error);
+        });
+    }
+    </script>
+</head>
+<body>
+    <main>
+        <div id="Login">
+            <img src="LOGO.png">
+            <h1 id="LoginHeader">Login</h1>
+            <form id="login-form">
+                <input type="text" name="username" id="username-field" placeholder="Username">
+                <br>
+                <input type="password" name="password" id="password-field" placeholder="Password">
+                <br>
+                <input type="button" value="Login" id="submit" onclick="sendFormData()">
+            </form>
+            <br>
+            <div id="Register">
+                <p>Don't have an account?</p>
+                <p><a href="SignUp.html">Register here</a></p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

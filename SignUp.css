@@ -1,0 +1,97 @@
+table, th{
+	border-color: black;
+	border: 2px;
+	border-style: solid;
+	border-collapse: collapse;
+}
+button{
+	display:inline-block;
+	padding:0.35em 1.2em;
+	border:0.1em solid #FFFFFF;
+	margin:0 0.3em 0.3em 0;
+	border-radius:0.12em;
+	box-sizing: border-box;
+	text-decoration:none;
+	font-family:'Roboto',sans-serif;
+	font-weight:500;
+	font-size:20px;
+	color:#000000;
+	position: sticky;
+	text-align:center;
+	transition: all 0.2s;
+	background-color:#63C5DA;
+	height: 40px;
+}
+
+button:hover{
+	color:#FFFFFF;
+	background-color:#000000;
+}
+
+aside {
+	width: 39.75%;
+	height: auto;
+	background-color: rgb(202, 201, 201);
+	border: 2px;
+	border-top-width: 0.1px;
+	border-right-color: black;
+	border-right-style: solid;
+	border-left-color: black;
+	border-left-style: solid;
+	text-align: center;
+	line-height: 50px;
+	float: left;
+	}
+
+main {
+    background-color: white;
+    border: 2px;
+    border-right-color: black;
+    border-right-style: solid;
+    border-left-color: black;
+    border-left-style: solid;
+    border-top-width: -10px;
+    border-top-color: white;
+    border-top-style: solid;
+    text-align: left;
+    padding-left: 175px;
+    }
+h1 {
+    text-align: center;
+    font-size: 28px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+    line-height: 0px;
+}
+
+input[type=text] {
+	color: rgb(156, 156, 156);
+	height: 20px;
+	width: 200px;
+	font-size: 10px;
+}
+
+input[type=password] {
+	color: rgb(156, 156, 156);
+	height: 20px;
+	width: 200px;
+	font-size: 15px;
+}
+
+input:focus {
+	background-color: rgb(236, 236, 235);
+}
+
+ul{
+	list-style: none;
+	text-align: left;
+}
+
+ul li::before{
+	content: "\2022";
+	color: black;
+	font-weight: bold;
+	display: inline-block;
+	width: 1em;
+	margin-left: -1em;
+}

@@ -1,0 +1,26 @@
+#Login {
+    height: 500px;
+    width: 400px;
+    font-size: 28px;
+    text-align: center;
+    position: relative;
+    margin: auto;
+    border: 1px;
+    border-style: solid;
+}
+
+img {
+    height: 100px;
+    margin-bottom: 0;
+    padding-bottom: 0;
+    display: center;
+}
+
+#ShowPassword {
+    font-size: 15px;
+}
+
+#Register {
+    font-size: 12px;
+    line-height: 20%;
+}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>GlobeTrotters - Settings</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="icon" type="image/x-icon" href="LOGO.ico" />
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="Settings.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="mb-auto">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <h3 class="float-md-start mb-0" style="color:white;">GlobeTrotters</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" href="Home.html">Home</a>
+            <a class="nav-link" href="Trending.html">Trending</a>
+            <a class="nav-link" href="Profile.html">Profile</a>
+            <a class="nav-link active" aria-current="page" href="Settings.html">Settings</a>
+            <a class="nav-link" href="Safety.html">Safety</a>
+            <a class="nav-link" href="matches.html">Matches</a>
+            <a class="nav-link" href="Search.html">Search</a>
+          </nav>
+        </div>
+      </nav>
+        <main>
+      <h1 style="text-align: center;  color: #2C302F;"><i>Settings</i></h1>
+      <h2 class="maintopic">&emsp;&emsp;&emsp;Interface</h2>
+      <h3 class="settingstext">&emsp;&emsp;Dark mode</h3>
+      <label class="switch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+      </label>
+      <h3 class="settingstext">&emsp;&emsp;Language</h3>
+      <h2 class="maintopic">&emsp;&emsp;&emsp;Your Preferences</h2>
+      <h3 class="settingstext">&emsp;&emsp;Recently active status</h3>
+
+      <label class="switch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+      </label>
+
+      <div class="slidecontainer">
+      <input type="range" min="1" max="100" value="50" class="sliderrange" id="myRange">
+      <p>Less than <span id="distance"></span> miles</p>
+       </div>
+
+      <h3 class="settingstext">&emsp;&emsp;Distance preference</h3>
+      <h3 class="settingstext">&emsp;&emsp;Appear offline</h3>
+
+      <label class="switch">
+      <input type="checkbox">
+      <span class="slider round"></span>
+      </label>
+
+      <h3 class="settingstext">&emsp;&emsp;Age preference</h3>
+      <select class="viewers">
+        <option value="18-26">18-26 years</option>
+        <option value="26-38">26-38 years</option>
+        <option value="38-50">38-50 years</option>
+        <option value="50-72">50-72 years</option>
+      </select>
+      <h3 class="settingstext">&emsp;&emsp;Who do I want to see my profile?</h3>
+
+      <select class="viewers">
+        <option value="Matches">Matches</option>
+        <option value="Everyone">Everyone</option>
+      </select>
+
+      <h3 class="settingstext">&emsp;&emsp;Show me:</h3>
+
+      <select class="viewers">
+        <option value="Men">Men</option>
+        <option value="Women">Women</option>
+        <option value="Both">Both</option>
+      </select>
+
+      <h2 class="maintopic">&emsp;&emsp;&emsp;Safety</h2>
+      <h3 class="settingstext">&emsp;&emsp;<a class="settings-link" href="Safety.html"">Safety tips</a></h3>
+      <h2 class="maintopic">&emsp;&emsp;&emsp;Payment</h2>
+      <h3 class="settingstext">&emsp;&emsp;<a class="settings-link" href="Safety.html"">Purchases and memberships</a></h3>
+      <h3 class="settingstext">&emsp;&emsp;<a class="settings-link" href="Safety.html"">Payment methods</a></h3>
+      <h2 class="maintopic">&emsp;&emsp;&emsp;Privacy</h2>
+      <h3 class="settingstext">&emsp;&emsp;<a class="settings-link" href="Safety.html"">Privacy Policy</a></h3>
+      <h3 class="settingstext">&emsp;&emsp;<a class="settings-link" href="Safety.html"">Terms and conditions</a></h3>
+    </main>
+        <script>
+      var distance_slider=document.getElementById("myRange");
+      var output=document.getElementById("distance");
+      output.innerHTML=distance_slider.value;
+
+      distance_slider.oninput = function(){
+        output.innerHTML = this.value;
+      }
+    </script>
+  </body>
+</html>

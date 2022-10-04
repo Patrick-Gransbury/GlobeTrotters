@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="icon" type="image/x-icon" href="LOGO.ico">
+    <link rel="stylesheet" href="SignUp.css">
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src)
+            }
+        }
+
+        // this function needs to return the url of the profile picture
+        function getUrl(){
+            return "INSERT URL HERE"
+        }
+
+        // This function sends the form data to the web-server for adding to the database
+        function sendProfilePic(){
+
+            console.log("Profile pic sent")
+
+            const data = { 'profilePic' : getUrl()};
+
+            fetch('http://localhost:8080/api/profilePic', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+            console.log('Profile Pic Succesfully Sent:', data);
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+        }
+
+        function sendFormData(){
+            console.log("Form Data sent")
+
+            const data = {
+                'firstName' : document.getElementById('Fname').value,
+                'lastName' : document.getElementById('Lname').value,
+                'emailAddress' : document.getElementById('Email').value,
+                'phoneNumber' : document.getElementById('Mobile').value,
+                'gender' : document.getElementById('Gender').value,
+                'nationality' : document.getElementById('Nationality').value,
+                'dob' :  document.getElementById('Age').value,
+                'username' : document.getElementById('Username').value,
+                'password' : document.getElementById('Password').value,
+
+            };
+
+            fetch('http://localhost:8080/api/profileInfo', {
+            method: 'POST', // or 'PUT'
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+            })
+            .then(response => response.json())
+            .then(data => {
+            // console.log('Form Data Successfully Sent:', data);
+            console.log('LOOK HERE: ' + data.usernameExists)
+            if(data.usernameExists == true){
+                console.log("code running")
+                alert("Username already in use!")            }
+            else{
+                window.location.href = "login.html";
+            }
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+
+        }
+
+
+    </script>
+</head>
+<body>
+    <header>
+        <table width=100% >
+            <tr>
+                <td style="border-color: black; border-width: 2px; border-style: solid; border-collapse: collapse;" width=30%>
+                    <img align="left" src="LOGO.png" alt="Globe Trotters Logo" height=80px>
+                    <h1 style="line-height: 80px; text-align: left; line-height: 40px;">GLOBE TROTTERS</h1>
+                </td>
+                <td style="border-color: black; border-width: 2px; border-style: solid; border-collapse: collapse; margin-left:auto; margin-right:auto; padding-left: 20px;">
+                    <a href="Login.html">
+                        <button>
+                            Login
+                        </button></a>
+                </td>
+                <td width=60%>
+                    <h1>Let's get you signed up!</h1>
+                </td>
+            </tr>
+        </table>
+    </header>
+
+    <aside>
+        <p style="font-size: 18px; line-height: 100%;">Congratulations</p>
+        <p style="font-size: 18px; line-height: 100%;">Just a few clicks away from finding the best trips with the best people!</p>
+        <p style="font-size: 18px; line-height: 100%;">Please submit your profile picture below!</p>
+        <form action="">
+            <label for="ProfPic">Select Your Profile Picture:</label>
+            <input type="file" accept="image/*" onchange="loadFile(event)">
+            <img id="output" width="70%">
+            <br>
+            <input type="submit" value="Submit" onclick="sendData()">
+        </form>
+    </aside>
+
+    <main>
+        <br><br>
+        <form action="" style="text-align: center; font-size: 28px; display:flex; ">
+            <table style="border-color: white; border-width: 0px; border-style: solid; margin-left:25%; margin-right:auto; text-align: left;" width=60%>
+                <tr>
+                    <td  colspan=2 style="text-align: center; border-color: rgb(231, 231, 231); border-width: 5px; border-style: solid; margin-left:auto; margin-right:auto; background-color: #ecabbb; font-size: 15px;" >Note: Everything with an "<span style="font-size: 12px;">&#65121;</span>" must be filled in!
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Fname" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>First Name:</small></label>
+                        <br>
+                        <input type="text" id="Fname" name="Fname" placeholder="First Name">
+                    </td>
+                    <td>
+                        <label for="Lname" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Last Name:</small></label>
+                        <br>
+                        <input type="text" id="Lname" name="Lname" placeholder="Last Name">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Email" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Email Address:</small></label>
+                        <br>
+                        <input type="text" id="Email" name="Email" placeholder="Email">
+                    </td>
+                    <td>
+                        <label for="ConEmail" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Confirm Email Address:</small></label>
+                        <br>
+                        <input type="text" id="ConEmail" name="ConEmail" placeholder="Confirm Email">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Mobile" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Phone Number:</small></label>
+                        <br>
+                        <input type="text" id="Mobile" name="Mobile" placeholder="Mobile">
+                    </td>
+                    <td>
+                        <label for="Gender" style="font-size: 15px;"><span style ="font-size: 12px;">&#65121;</span><small>Gender:</small></label>
+                        <br>
+                        <select id="Gender" name="Gender">
+                            <option value="Choose" style="color: rgb(156, 156, 156);">Choose...</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Nationality" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Nationality:</small></label>
+                        <br>
+                        <input type="text" id="Nationality" name="Nationality" placeholder="Nationality">
+                    </td>
+                    <td>
+                        <label for="Age" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Age:</small></label>
+                        <br>
+                        <input type="text" id="Age" name="Age" placeholder="Age">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Username" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Username:</small></label>
+                        <br>
+                        <input type="text" id="Username" name="Username" placeholder="Username">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="Password" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Password:</small></label>
+                        <br>
+                        <input type="password" id="Password" name="Password" placeholder="********" minlength="8" required>
+                    </td>
+                    <td>
+                        <label for="ConPassword" style="font-size: 15px;"><span style="font-size: 12px;">&#65121;</span><small>Confirm Password:</small></label>
+                        <br>
+                        <input type="password" id="ConPassword" name="ConPassword" placeholder="********" minlength="8" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="color: white;">Hi</td>
+                </tr>
+                <tr><td colspan=2 style="font-size: 12px; color: black; text-align: center; border-color: rgb(231, 231, 231); border-width: 5px; border-style: solid; margin-left:auto; margin-right:auto; background-color: #ecabbb;" >
+                    <br>
+                    Password must contain:
+                    <ul>
+                        <li>At least 8 characters</li>
+                        <li>At least one uppercase letter, lowercase letter and number</li>
+                        <li>At least one charatcer from {! @ £ $ ^ * &}</li>
+                    </ul>
+                </td></tr>
+                <tr>
+                    <td>
+                        <label for="ValidPassport" style="font-size: 15px;">Do you have a valid passport?</label>
+                    </td>
+                    <td>
+                        <select id="ValidPassport" name="ValidPassport">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="ValidPassport" style="font-size: 15px;">Do you have any valid ID documentation?</label>
+                        <p style="margin-left: 17px; font-size: 8px; color: black;">(You might have to share it to your partner to confirm your identity!)</p>
+                    </td>
+                    <td>
+                        <select id="ValidPassport" name="ValidPassport">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan=2>
+                        <label style="font-size: 0.9rem;">By clicking submit, you are acknowledging that your phone number will be shared with your matches so that you can communicate.</label>
+                        <input type="button" value="Submit" onclick="sendFormData()">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </main>
+</body>
+</html>

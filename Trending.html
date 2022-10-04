@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>GlobeTrotters - Trending Page</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="icon" type="image/x-icon" href="LOGO.ico">
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/dark-blue/main.css">
+<script src="https://js.arcgis.com/4.17/"></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      ::-webkit-scrollbar{
+        width: 15px;
+      }
+
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: #808080;
+        border-radius: 10px;
+      }
+
+      ::-webkit-scrollbar-thumb:hover {
+        background: #5a5a5a;
+      }
+
+      body{
+        overflow-x: hidden;
+      }
+    </style>
+
+    <link href="Trending.css" rel="stylesheet">
+    <script src="Trending.js"></script>
+  </head>
+  <body style="background-color: black">
+    <header class="mb-auto">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <h3 class="float-md-start mb-0" style="color:white;">GlobeTrotters</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" href="Home.html">Home</a>
+            <a class="nav-link active" aria-current="page" href="Trending.html">Trending</a>
+            <a class="nav-link" href="Profile.html">Profile</a>
+            <a class="nav-link" href="Settings.html">Settings</a>
+            <a class="nav-link" href="Safety.html">Safety</a>
+            <a class="nav-link" href="matches.html">Matches</a>
+            <a class="nav-link" href="Search.html">Search</a>
+          </nav>
+
+
+        </div>
+      </nav>
+      <div id="info">
+        <p style="padding-top: 1em;">Not sure where to start? Take a look at some trending places below!</p>
+      </div>
+    </header>  
+      <div id="sceneContainer"></div>
+  </body>
+</html>

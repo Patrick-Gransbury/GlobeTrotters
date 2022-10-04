@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>GlobeTrotters - Matches</title>
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link rel="icon" type="image/x-icon" href="LOGO.ico">
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+    <script>
+        function displayMatches() {
+            document.getElementById("display").innerHTML = " "
+            var dataToDisplay = JSON.parse(sessionStorage.getItem("Matches"));
+            var listOfUsers = "";
+            for (let i = 0; i < dataToDisplay.length; i++) {
+                document.getElementById("display").innerHTML = document.getElementById("display").innerHTML + "<a href='ViewProfile.html' class='btn btn-primary btn-sml' style='height:2.5rem;'>View Profile</a>" + " " + (dataToDisplay[i].username) + " " + (dataToDisplay[i].first_name) + " " + (dataToDisplay[i].last_name) + "<br><br>";
+                sessionStorage.setItem('selectedUser',dataToDisplay[0].username);
+            }
+          return;
+        }
+    </script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="Home1.css" rel="stylesheet">
+  </head>
+  <body>
+
+    <header class="mb-auto">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <h3 class="float-md-start mb-0" style="color:white;">GlobeTrotters</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" href="Home.html">Home</a>
+            <a class="nav-link" href="Trending.html">Trending</a>
+            <a class="nav-link" href="Profile.html">Profile</a>
+            <a class="nav-link" href="Settings.html">Settings</a>
+            <a class="nav-link" href="Safety.html">Safety</a>
+            <a class="nav-link active" aria-current="page" href="matches.html">Matches</a>
+            <a class="nav-link" href="Search.html">Search</a>
+          </nav>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container">
+      <div class="bg-white p-5 rounded" style="text-align: center;">
+        <h2>Matches</h2>
+        <br>
+        <button class="btn btn-lg btn-primary" onclick="displayMatches()">
+            Display Matches
+        </button>
+      </div>
+      <p style="text-align: center;" id="display"></p>
+    </main>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

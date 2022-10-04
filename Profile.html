@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>Profile Page</title>
+
+<link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="LOGO.ico">
+<link rel="stylesheet" href="https://js.arcgis.com/4.17/esri/themes/dark-blue/main.css">
+<script src="https://js.arcgis.com/4.17/"></script>
+
+    <script>
+        function displayDetails() {
+            var myUsername = sessionStorage.getItem("username");
+            document.getElementById("username").value = myUsername;
+            fetch('http://localhost:8080/api/getUserDetails/' + myUsername, {
+              method: 'GET', // or 'PUT'
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            }).then(response => response.json()).then(data => {console.log(JSON.stringify(data))
+              document.getElementById("name").value = data[0].first_name + " " + data[0].last_name
+              document.getElementById("age").value = data[0].age
+              document.getElementById("gender").value = data[0].gender
+              document.getElementById("nationality").value = data[0].nationality
+              document.getElementById("email").value = data[0].email
+              document.getElementById("phoneNumber").value = data[0].phone_number
+              document.getElementById("bio").value = data[0].bio
+            })
+        return;
+        }
+
+        window.onload = function() {
+            displayDetails();
+        }
+    </script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    <link href="Trending.css" rel="stylesheet">
+    <script src="Trending.js"></script>
+  </head>
+  <body>
+
+    <header class="mb-auto">
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <div class="container-fluid">
+          <h3 class="float-md-start mb-0" style="color:white;">GlobeTrotters</h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" href="Home.html">Home</a>
+            <a class="nav-link" href="Trending.html">Trending</a>
+            <a class="nav-link active" aria-current="page" href="Profile.html">Profile</a>
+            <a class="nav-link" href="Settings.html">Settings</a>
+            <a class="nav-link" href="Safety.html">Safety</a>
+            <a class="nav-link" href="matches.html">Matches</a>
+            <a class="nav-link" href="Search.html">Search</a>
+          </nav>
+        </div>
+      </nav>
+      <aside style="width: 150px; height: 500px; background-color: white; border-top-style: solid; border-top-color: white; border-right-color: white; border-right-style: solid; text-align: center; line-height: 50px; float: left;">
+      </aside>
+      <main>
+      <div class="container rounded bg-white mt-5 mb-5">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+                <div class="text-center"><input type = "text" class="form-control" style="text-align:center;" placeholder="Username" id = "username"><br><br><a href="EditProfile.html"><button class="btn btn-primary profile-button" type="button">Edit Profile</button></a></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right" style="font-size: 45px;">Profile Page</h4>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-md-6"><label class="labels"><br>Name</label><input type="text" class="form-control" placeholder="Name" value="" id="name"></div>
+                        <div class="col-md-6"><label class="labels"><br>Age</label><input type="text" class="form-control" value="" placeholder="dd/mm/yyyy" id="age"></div>
+                        <div class="col-md-6"><label class="labels">Gender</label><input type="text" class="form-control" value="" placeholder="Gender" id="gender"></div>
+                        <div class="col-md-6"><label class="labels">Nationality</label><input type="text" class="form-control" value="" placeholder="Nationality" id="nationality"></div>
+                    </div>
+                    <div class="col-md-6"><label class="labels">Phone</label><input type="text" style="width:8rem;" class="form-control" value="" placeholder="Phone Number" id="phoneNumber"></div>
+                    <div class="col-md-6"><label class="labels">Email</label><input type="text" style="width:13rem;" class="form-control" value="" placeholder="Email" id="email"></div>
+                    <div class="col-md-6" colspan="2"><label class="labels">Bio</label><input type="text" style="width:13rem;" class="form-control" value="" placeholder="Bio" id="bio"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    </main>
+    </header>
+
+  </body>
+</html>
